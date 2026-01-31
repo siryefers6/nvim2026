@@ -18,11 +18,11 @@ keymap("n", "<leader>Q", ":qa!<CR>", opts)
 keymap("n", "<Esc>", ":noh<CR>", opts)
 
 -- ========== NAVEGACIÓN ==========
--- Mejor navegación entre ventanas
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+-- Navegación entre ventanas con leader
+keymap("n", "<leader>h", "<C-w>h", opts)
+keymap("n", "<leader>j", "<C-w>j", opts)
+keymap("n", "<leader>k", "<C-w>k", opts)
+keymap("n", "<leader>l", "<C-w>l", opts)
 
 -- Redimensionar ventanas
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)

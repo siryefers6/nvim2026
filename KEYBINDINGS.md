@@ -21,10 +21,10 @@
 ### Ventanas (Splits)
 | Atajo | Descripción |
 |-------|-------------|
-| `<C-h>` | Ir a ventana **izquierda** |
-| `<C-j>` | Ir a ventana **abajo** |
-| `<C-k>` | Ir a ventana **arriba** |
-| `<C-l>` | Ir a ventana **derecha** |
+| `<leader>h` | Ir a ventana **izquierda** |
+| `<leader>j` | Ir a ventana **abajo** |
+| `<leader>k` | Ir a ventana **arriba** |
+| `<leader>l` | Ir a ventana **derecha** |
 | `<C-Up>` | **Aumentar** altura |
 | `<C-Down>` | **Reducir** altura |
 | `<C-Left>` | **Reducir** ancho |

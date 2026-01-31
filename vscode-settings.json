@@ -31,7 +31,10 @@
   "vim.handleKeys": {
     "<C-a>": false,  // Permitir Ctrl+A de VSCode (seleccionar todo)
     "<C-f>": false,  // Permitir Ctrl+F de VSCode (buscar)
-    "<C-h>": false,  // Permitir Ctrl+H de VSCode
+    "<C-h>": false,  // Permitir Ctrl+H de VSCode (buscar y reemplazar)
+    "<C-j>": false,  // Permitir Ctrl+J de VSCode
+    "<C-k>": false,  // Permitir Ctrl+K de VSCode
+    "<C-l>": false,  // Permitir Ctrl+L de VSCode
     "<C-z>": false,  // Permitir Ctrl+Z de VSCode (deshacer)
     "<C-y>": false,  // Permitir Ctrl+Y de VSCode (rehacer)
     "<C-c>": false,  // Permitir Ctrl+C de VSCode (copiar)
@@ -97,21 +100,21 @@
       "commands": ["workbench.action.closeActiveEditor"]
     },
     
-    // NAVEGACIÓN ENTRE SPLITS
+    // NAVEGACIÓN ENTRE SPLITS (con leader para evitar conflictos)
     {
-      "before": ["<C-h>"],
+      "before": ["<leader>", "h"],
       "commands": ["workbench.action.focusLeftGroup"]
     },
     {
-      "before": ["<C-l>"],
+      "before": ["<leader>", "l"],
       "commands": ["workbench.action.focusRightGroup"]
     },
     {
-      "before": ["<C-k>"],
+      "before": ["<leader>", "k"],
       "commands": ["workbench.action.focusAboveGroup"]
     },
     {
-      "before": ["<C-j>"],
+      "before": ["<leader>", "j"],
       "commands": ["workbench.action.focusBelowGroup"]
     },
     

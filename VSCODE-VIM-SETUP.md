@@ -64,10 +64,10 @@ EasyMotion funciona igual que en Neovim:
 | `<leader>sv` | Split vertical |
 | `<leader>sh` | Split horizontal |
 | `<leader>sx` | Cerrar split actual |
-| `<C-h>` | Navegar a split izquierda |
-| `<C-l>` | Navegar a split derecha |
-| `<C-k>` | Navegar a split arriba |
-| `<C-j>` | Navegar a split abajo |
+| `<leader>h` | Navegar a split izquierda |
+| `<leader>l` | Navegar a split derecha |
+| `<leader>k` | Navegar a split arriba |
+| `<leader>j` | Navegar a split abajo |
 
 ### 📑 Buffers/Tabs
 
