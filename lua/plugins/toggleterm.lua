@@ -30,10 +30,10 @@ return {
       float_opts = {
         border = "curved", -- single, double, shadow, curved
         width = function()
-          return math.floor(vim.o.columns * 0.9)
+          return math.floor(vim.o.columns * 0.6)
         end,
         height = function()
-          return math.floor(vim.o.lines * 0.9)
+          return math.floor(vim.o.lines * 0.7)
         end,
         winblend = 0,
         highlights = {
