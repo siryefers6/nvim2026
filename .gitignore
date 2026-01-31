@@ -1,0 +1,24 @@
+# Neovim
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Lazy.nvim - directorio de plugins (se reinstalan automáticamente)
+lazy-lock.json
+
+# Datos de Neovim
+plugin/
+spell/
+
+# LSP/Mason data
+mason/
+*.log
+
+# Sistema operativo
+Thumbs.db
+.directory
+
+# Backups
+*.backup
+*.bak
