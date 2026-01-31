@@ -1,5 +1,5 @@
 -- ============================================
--- LSP - Language Server Protocol
+-- LSP - Language Server Protocol (Neovim 0.11+)
 -- ============================================
 
 return {
@@ -10,7 +10,6 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
-    local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     
     local opts = { noremap = true, silent = true }
@@ -86,9 +85,12 @@ return {
       },
     })
     
-    -- Configurar servidores LSP individuales
+    -- Usar la nueva API de Neovim 0.11+: vim.lsp.config()
     -- Lua
-    lspconfig.lua_ls.setup({
+    vim.lsp.config("lua_ls", {
+      cmd = { "lua-language-server" },
+      filetypes = { "lua" },
+      root_markers = { ".luarc.json", ".luarc.jsonc", "selene.toml", "stylua.toml" },
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
@@ -107,41 +109,64 @@ return {
     })
     
     -- Python
-    lspconfig.pyright.setup({
+    vim.lsp.config("pyright", {
+      cmd = { "pyright-langserver", "--stdio" },
+      filetypes = { "python" },
+      root_markers = { "pyrightconfig.json", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- TypeScript/JavaScript
-    lspconfig.ts_ls.setup({
+    vim.lsp.config("ts_ls", {
+      cmd = { "typescript-language-server", "--stdio" },
+      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- HTML
-    lspconfig.html.setup({
+    vim.lsp.config("html", {
+      cmd = { "html-languageserver", "--stdio" },
+      filetypes = { "html" },
+      root_markers = { ".htmlhintrc", "package.json" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- CSS
-    lspconfig.cssls.setup({
+    vim.lsp.config("cssls", {
+      cmd = { "css-languageserver", "--stdio" },
+      filetypes = { "css", "scss", "less" },
+      root_markers = { "package.json", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- JSON
-    lspconfig.jsonls.setup({
+    vim.lsp.config("jsonls", {
+      cmd = { "vscode-json-languageserver", "--stdio" },
+      filetypes = { "json", "jsonc" },
+      root_markers = { "package.json", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- Tailwind CSS
-    lspconfig.tailwindcss.setup({
+    vim.lsp.config("tailwindcss", {
+      cmd = { "tailwindcss-language-server", "--stdio" },
+      filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx" },
+      root_markers = { "tailwind.config.js", "tailwind.config.ts", "tailwind.config.cjs", "tailwind.config.mjs" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
-    -- Agrega más servidores según necesites
+    -- Auto-iniciar servidores disponibles
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(event)
+        vim.lsp.start_client(vim.lsp.get_client_by_id(event.buf), { once = false })
+      end,
+    })
   end,
 }
