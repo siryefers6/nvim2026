@@ -60,18 +60,19 @@ return {
     -- Capacidades mejoradas con cmp
     local capabilities = cmp_nvim_lsp.default_capabilities()
     
-    -- Configuración de diagnósticos
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
-    
+    -- Configuración de diagnósticos (Neovim 0.11+)
     vim.diagnostic.config({
       virtual_text = {
         prefix = "●",
       },
-      signs = true,
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = " ",
+          [vim.diagnostic.severity.WARN] = " ",
+          [vim.diagnostic.severity.HINT] = "󰠠 ",
+          [vim.diagnostic.severity.INFO] = " ",
+        },
+      },
       update_in_insert = false,
       underline = true,
       severity_sort = true,
