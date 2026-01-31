@@ -28,7 +28,7 @@ opt.hlsearch = true                  -- Resaltar búsquedas
 opt.incsearch = true                 -- Búsqueda incremental
 
 -- Comportamiento
-opt.mouse = "a"                      -- Habilitar mouse
+opt.mouse = ""                       -- Deshabilitar mouse
 opt.clipboard = "unnamedplus"        -- Usar clipboard del sistema
 opt.completeopt = "menu,menuone,noselect"  -- Opciones de autocompletado
 opt.splitbelow = true                -- Split horizontal hacia abajo
