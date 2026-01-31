@@ -1,0 +1,308 @@
+{
+  // ============================================
+  // VSCODE VIM CONFIGURATION
+  // Configuración para usar con la extensión Vim de VSCode
+  // Copia este contenido a tu settings.json de VSCode
+  // ============================================
+
+  // CONFIGURACIÓN BÁSICA DE VIM
+  "vim.leader": "<space>",
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.ignorecase": true,
+  "vim.smartcase": true,
+  "vim.easymotion": true,
+  "vim.easymotionMarkerBackgroundColor": "#000000",
+  "vim.easymotionMarkerForegroundColorOneChar": "#ff0000",
+  "vim.easymotionMarkerForegroundColorTwoCharFirst": "#ffb000",
+  "vim.easymotionMarkerForegroundColorTwoCharSecond": "#b98300",
+  "vim.easymotionKeys": "asdfghjklqwertyuiopzxcvbnm",
+  
+  // VISUALES
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.insert": "line",
+  "vim.cursorStylePerMode.visual": "block",
+  "vim.cursorStylePerMode.visualline": "block",
+  "vim.cursorStylePerMode.visualblock": "block",
+  "vim.cursorStylePerMode.replace": "underline",
+  
+  // COMPORTAMIENTO
+  "vim.handleKeys": {
+    "<C-a>": false,  // Permitir Ctrl+A de VSCode (seleccionar todo)
+    "<C-f>": false,  // Permitir Ctrl+F de VSCode (buscar)
+    "<C-h>": false,  // Permitir Ctrl+H de VSCode
+    "<C-z>": false,  // Permitir Ctrl+Z de VSCode (deshacer)
+    "<C-y>": false,  // Permitir Ctrl+Y de VSCode (rehacer)
+    "<C-c>": false,  // Permitir Ctrl+C de VSCode (copiar)
+    "<C-v>": false,  // Permitir Ctrl+V de VSCode (pegar)
+    "<C-x>": false   // Permitir Ctrl+X de VSCode (cortar)
+  },
+
+  // ========== NORMAL MODE ==========
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // EASYMOTION - <leader><leader>s para búsqueda de 2 caracteres
+    {
+      "before": ["<leader>", "<leader>", "s"],
+      "after": ["<leader>", "<leader>", "2", "s"]
+    },
+    {
+      "before": ["s"],
+      "after": ["<leader>", "<leader>", "s"]
+    },
+    
+    // GUARDAR Y SALIR
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":q"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": [":w"]
+    },
+    
+    // TELESCOPE/BÚSQUEDA (adaptado a VSCode)
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "f", "s"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["<leader>", "f", "r"],
+      "commands": ["workbench.action.openRecent"]
+    },
+    {
+      "before": ["<leader>", "f", "b"],
+      "commands": ["workbench.action.showAllEditors"]
+    },
+    {
+      "before": ["<leader>", "f", "c"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    
+    // SPLITS/VENTANAS
+    {
+      "before": ["<leader>", "s", "v"],
+      "commands": ["workbench.action.splitEditorRight"]
+    },
+    {
+      "before": ["<leader>", "s", "h"],
+      "commands": ["workbench.action.splitEditorDown"]
+    },
+    {
+      "before": ["<leader>", "s", "x"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    
+    // NAVEGACIÓN ENTRE SPLITS
+    {
+      "before": ["<C-h>"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    
+    // BUFFERS/TABS
+    {
+      "before": ["<Tab>"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<S-Tab>"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<leader>", "x"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    
+    // LSP/CODE ACTIONS
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["g", "D"],
+      "commands": ["editor.action.revealDeclaration"]
+    },
+    {
+      "before": ["g", "i"],
+      "commands": ["editor.action.goToImplementation"]
+    },
+    {
+      "before": ["g", "t"],
+      "commands": ["editor.action.goToTypeDefinition"]
+    },
+    {
+      "before": ["g", "R"],
+      "commands": ["references-view.findReferences"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["<leader>", "r", "n"],
+      "commands": ["editor.action.rename"]
+    },
+    
+    // DIAGNÓSTICOS
+    {
+      "before": ["<leader>", "d"],
+      "commands": ["editor.action.marker.nextInFiles"]
+    },
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prevInFiles"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.nextInFiles"]
+    },
+    {
+      "before": ["<leader>", "D"],
+      "commands": ["workbench.actions.view.problems"]
+    },
+    
+    // GIT
+    {
+      "before": ["<leader>", "g", "s"],
+      "commands": ["git.stage"]
+    },
+    {
+      "before": ["<leader>", "g", "u"],
+      "commands": ["git.unstage"]
+    },
+    {
+      "before": ["<leader>", "g", "p"],
+      "commands": ["editor.action.dirtydiff.next"]
+    },
+    {
+      "before": ["<leader>", "g", "c"],
+      "commands": ["git.commitStaged"]
+    },
+    {
+      "before": ["<leader>", "g", "f"],
+      "commands": ["workbench.view.scm"]
+    },
+    {
+      "before": ["]", "c"],
+      "commands": ["workbench.action.editor.nextChange"]
+    },
+    {
+      "before": ["[", "c"],
+      "commands": ["workbench.action.editor.previousChange"]
+    },
+    
+    // TERMINAL
+    {
+      "before": ["<leader>", "t", "f"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+    {
+      "before": ["<C-\\>"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+    
+    // UTILIDADES
+    {
+      "before": ["<leader>", "f", "k"],
+      "commands": ["workbench.action.openGlobalKeybindings"]
+    },
+    {
+      "before": ["<leader>", "f", "C"],
+      "commands": ["workbench.action.showCommands"]
+    },
+    {
+      "before": ["<Esc>"],
+      "commands": [":noh"]
+    },
+    
+    // EXPLORADOR DE ARCHIVOS
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["<leader>", "E"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    }
+  ],
+
+  // ========== VISUAL MODE ==========
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // INDENTAR (mantener selección)
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    
+    // MOVER LÍNEAS
+    {
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"]
+    },
+    
+    // CODE ACTIONS
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"]
+    }
+  ],
+
+  // ========== INSERT MODE ==========
+  "vim.insertModeKeyBindings": [
+    // jk para salir de insert mode
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+
+  // CONFIGURACIONES ADICIONALES DE VSCODE
+  "editor.lineNumbers": "relative",
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSurroundingLines": 8,
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#ffcc00",
+    "editorCursor.background": "#000000"
+  },
+
+  // DESACTIVAR SUGERENCIAS MOLESTAS EN VIM
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  
+  // OTRAS CONFIGURACIONES ÚTILES
+  "editor.scrollBeyondLastLine": false,
+  "workbench.activityBar.location": "top",
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "selection"
+}
