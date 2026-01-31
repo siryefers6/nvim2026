@@ -29,14 +29,14 @@ return {
     mason_lspconfig.setup({
       -- Lista de servidores LSP a instalar automáticamente
       ensure_installed = {
-        "lua_ls",                    -- Lua
-        "pyright",                   -- Python
-        "typescript-language-server", -- TypeScript/JavaScript
-        "html",                      -- HTML
-        "cssls",                     -- CSS
-        "tailwindcss",               -- Tailwind CSS
-        "jsonls",                    -- JSON
-        "emmet_ls",                  -- Emmet
+        "lua_ls",        -- Lua
+        "pyright",       -- Python
+        "ts_ls",         -- TypeScript/JavaScript (ThalesLanguageServer)
+        "html",          -- HTML
+        "cssls",         -- CSS
+        "tailwindcss",   -- Tailwind CSS
+        "jsonls",        -- JSON
+        "emmet_ls",      -- Emmet
       },
       automatic_installation = true,
     })
