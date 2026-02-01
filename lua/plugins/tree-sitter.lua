@@ -10,8 +10,7 @@ return {
     "windwp/nvim-ts-autotag",          -- Auto-cierre de tags HTML
     "nvim-treesitter/nvim-treesitter-textobjects", -- Text objects adicionales
   },
-  config = function()
-    require("nvim-treesitter.configs").setup({
+  opts = {
       -- Habilitar resaltado
       highlight = {
         enable = true,
@@ -114,4 +113,4 @@ return {
       },
     })
   end,
-}
+  }
