@@ -39,17 +39,114 @@ Configuración completa y moderna de Neovim con Lazy.nvim y los mejores plugins 
 4. **Compilador C** (para Telescope)
 5. **Ripgrep** (para búsqueda en archivos)
 
-### Windows
+### Windows - Instalación de Dependencias
+
+#### Opción 1: Con Winget (Recomendado)
 
 ```powershell
+# Instalar Neovim (última versión)
+winget install Neovim.Neovim
+
+# Instalar Node.js (última versión LTS)
+winget install OpenJS.NodeJS
+
+# Instalar Ripgrep
+winget install BurntSushi.ripgrep.MSVC
+
+# Instalar Git (si no lo tienes)
+winget install Git.Git
+```
+
+#### Opción 2: Con Chocolatey
+
+```powershell
+# Instalar Chocolatey (si no lo tienes, ejecuta PowerShell como Admin)
+Set-ExecutionPolicy Bypass -Scope Process -Force; `
+  iex ((New-Object System.Net.ServicePointManager).SecurityProtocol = `
+  [System.Net.ServicePointManager]::SecurityProtocol -bor 3072); `
+  iex (New-Object Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')
+
+# Instalar dependencias
+choco install neovim nodejs ripgrep git -y
+```
+
+#### Opción 3: Instalación Manual
+
+- **Neovim**: Descarga en [nvim.io](https://neovim.io/)
+- **Node.js**: Descarga en [nodejs.org](https://nodejs.org/)
+- **Ripgrep**: Descarga en [github.com/BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep/releases)
+- **Git**: Descarga en [git-scm.com](https://git-scm.com/)
+
+#### Verificar Instalación
+
+```powershell
+# Verificar versiones instaladas
+nvim --version
+node --version
+npm --version
+rg --version
+git --version
+```
+
+### Windows - Clonar e Instalar
+
+```powershell
+# Crear directorio si no existe
+New-Item -ItemType Directory -Path "$env:LOCALAPPDATA\nvim" -Force
+
 # Clonar el repositorio
-git clone https://github.com/TU_USUARIO/nvim2026.git ~\AppData\Local\nvim
+git clone https://github.com/TU_USUARIO/nvim2026.git "$env:LOCALAPPDATA\nvim"
 
 # Abrir Neovim (instalará todo automáticamente)
 nvim
 ```
 
-### Linux/macOS
+**Nota:** La primera vez que abras Neovim, se descargarán e instalarán automáticamente todos los plugins con Lazy.nvim. Esto puede tomar algunos minutos. Verás un menú con el progreso de instalación.
+
+### Linux/macOS - Instalación de Dependencias
+
+#### macOS (con Homebrew)
+
+```bash
+# Instalar Homebrew si no lo tienes
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Instalar dependencias
+brew install neovim node ripgrep git
+```
+
+#### Linux (Debian/Ubuntu)
+
+```bash
+# Actualizar repositorios
+sudo apt update
+sudo apt upgrade -y
+
+# Instalar dependencias
+sudo apt install -y neovim nodejs npm ripgrep git build-essential
+```
+
+#### Linux (Fedora/RHEL)
+
+```bash
+# Instalar dependencias
+sudo dnf install -y neovim nodejs npm ripgrep git gcc
+
+# Para ripgrep si no está disponible:
+cargo install ripgrep
+```
+
+#### Verificar Instalación
+
+```bash
+nvim --version
+node --version
+npm --version
+rg --version
+git --version
+```
+
+### Linux/macOS - Clonar e Instalar
 
 ```bash
 # Clonar el repositorio
@@ -58,6 +155,8 @@ git clone https://github.com/TU_USUARIO/nvim2026.git ~/.config/nvim
 # Abrir Neovim (instalará todo automáticamente)
 nvim
 ```
+
+**Nota:** La primera vez que abras Neovim, se descargarán e instalarán automáticamente todos los plugins con Lazy.nvim. Esto puede tomar algunos minutos.
 
 ## 📖 Documentación
 
@@ -95,6 +194,35 @@ Edita los archivos según tus necesidades y reinicia Neovim.
 - `:Mason` - Gestionar LSP/formatters
 - `:TSUpdate` - Actualizar parsers de Treesitter
 - `:checkhealth` - Verificar la salud de Neovim
+
+## 🐛 Solución de Problemas
+
+### Error: "rg" no encontrado
+
+**Solución:**
+- Verifica que Ripgrep esté instalado: `rg --version`
+- Si no está instalado, usa `winget install BurntSushi.ripgrep.MSVC` (Windows) o `brew install ripgrep` (macOS) o `sudo apt install ripgrep` (Linux)
+
+### Error: Node.js no encontrado
+
+**Solución:**
+- Verifica que Node.js esté instalado: `node --version`
+- Instala la última versión LTS desde [nodejs.org](https://nodejs.org/)
+- En Windows: `winget install OpenJS.NodeJS`
+
+### Los plugins no se instalan automáticamente
+
+**Solución:**
+- Abre Neovim nuevamente con `:Lazy` para ver el estado
+- Presiona `I` (Install) para instalar plugins faltantes
+- Asegúrate de tener conexión a internet
+
+### Copilot no funciona
+
+**Solución:**
+- Asegúrate de tener Node.js instalado
+- Ejecuta `:Copilot auth` para autenticarte
+- Verifica que tengas una cuenta GitHub con Copilot habilitado
 
 ## 📝 Notas
 
