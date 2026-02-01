@@ -47,8 +47,12 @@ Configuración completa y moderna de Neovim con Lazy.nvim y los mejores plugins 
 # Instalar Neovim (última versión)
 winget install Neovim.Neovim
 
-# Instalar Node.js (última versión LTS)
-winget install OpenJS.NodeJS
+# Instalar Node.js (última versión actual)
+winget install OpenJS.NodeJS.LTS
+
+# Para instalar la ÚLTIMA versión (no LTS), ejecuta después:
+# winget uninstall OpenJS.NodeJS.LTS
+# Luego descarga e instala manualmente desde https://nodejs.org/
 
 # Instalar Ripgrep
 winget install BurntSushi.ripgrep.MSVC
@@ -66,16 +70,34 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; `
   [System.Net.ServicePointManager]::SecurityProtocol -bor 3072); `
   iex (New-Object Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')
 
-# Instalar dependencias
+# Instalar dependencias (última versión de Node.js)
 choco install neovim nodejs ripgrep git -y
+
+# Para actualizar Node.js a la última versión:
+# choco upgrade nodejs -y
 ```
 
 #### Opción 3: Instalación Manual
 
 - **Neovim**: Descarga en [nvim.io](https://neovim.io/)
-- **Node.js**: Descarga en [nodejs.org](https://nodejs.org/)
+- **Node.js**: Descarga la **última versión** en [nodejs.org](https://nodejs.org/) (descarga el instalador "Current" para última versión)
 - **Ripgrep**: Descarga en [github.com/BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep/releases)
 - **Git**: Descarga en [git-scm.com](https://git-scm.com/)
+
+#### Opción 4: Con NVM (Node Version Manager) - Recomendado para múltiples versiones
+
+NVM te permite instalar y cambiar entre cualquier versión de Node.js fácilmente.
+
+```powershell
+# Instalar nvm-windows desde: https://github.com/coreybutler/nvm-windows/releases
+
+# Después de instalar nvm, abre PowerShell como Admin:
+nvm install latest
+nvm use latest
+
+# Verifica la versión instalada
+node --version
+```
 
 #### Verificar Instalación
 
@@ -111,7 +133,7 @@ nvim
 # Instalar Homebrew si no lo tienes
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Instalar dependencias
+# Instalar dependencias (última versión de Node.js)
 brew install neovim node ripgrep git
 ```
 
@@ -122,8 +144,12 @@ brew install neovim node ripgrep git
 sudo apt update
 sudo apt upgrade -y
 
-# Instalar dependencias
-sudo apt install -y neovim nodejs npm ripgrep git build-essential
+# Instalar Node.js (última versión) desde NodeSource
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs ripgrep git build-essential neovim
+
+# Para la ÚLTIMA versión (no LTS):
+# curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 ```
 
 #### Linux (Fedora/RHEL)
@@ -133,7 +159,24 @@ sudo apt install -y neovim nodejs npm ripgrep git build-essential
 sudo dnf install -y neovim nodejs npm ripgrep git gcc
 
 # Para ripgrep si no está disponible:
-cargo install ripgrep
+# cargo install ripgrep
+```
+
+#### macOS/Linux - Con NVM (Recomendado para múltiples versiones)
+
+```bash
+# Instalar NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+# Recargar shell
+source ~/.bashrc  # o ~/.zshrc si usas zsh
+
+# Instalar la última versión de Node.js
+nvm install latest
+nvm use latest
+
+# Hacer que sea la versión por defecto
+nvm alias default latest
 ```
 
 #### Verificar Instalación
