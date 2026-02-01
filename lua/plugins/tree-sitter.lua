@@ -11,9 +11,7 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects", -- Text objects adicionales
   },
   config = function()
-    local treesitter = require("nvim-treesitter.configs")
-    
-    treesitter.setup({
+    require("nvim-treesitter.configs").setup({
       -- Habilitar resaltado
       highlight = {
         enable = true,
