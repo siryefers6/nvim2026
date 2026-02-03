@@ -10,7 +10,8 @@ opt.relativenumber = true            -- Números relativos
 opt.termguicolors = true             -- Colores verdaderos
 opt.signcolumn = "yes"               -- Siempre mostrar signcolumn
 opt.cursorline = true                -- Resaltar línea actual
-opt.wrap = false                     -- No wrap de líneas
+opt.wrap = true                      -- Ajuste de línea
+opt.linebreak = true                 -- Romper líneas en palabras completas
 opt.scrolloff = 8                    -- Líneas de contexto
 opt.sidescrolloff = 8                -- Columnas de contexto
 
