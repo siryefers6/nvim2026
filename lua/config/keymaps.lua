@@ -7,8 +7,7 @@ local opts = { noremap = true, silent = true }
 
 -- ========== GENERAL ==========
 -- Guardar archivo
-keymap("n", "<C-s>", ":w<CR>", opts)
-keymap("i", "<C-s>", "<Esc>:w<CR>a", opts)
+keymap("n", "<leader>w", ":w<CR>", opts)
 
 -- Salir
 keymap("n", "<leader>q", ":q<CR>", opts)

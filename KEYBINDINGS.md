@@ -8,7 +8,7 @@
 
 | Atajo | Modo | Descripción |
 |-------|------|-------------|
-| `<C-s>` | Normal/Insert | **Guardar** archivo |
+| `<leader>w` | Normal | **Guardar** archivo |
 | `<leader>q` | Normal | **Salir** del buffer actual |
 | `<leader>Q` | Normal | **Salir** forzado de todo |
 | `<Esc>` | Normal | **Limpiar** resaltado de búsqueda |
@@ -129,6 +129,7 @@
 | `<leader>ca` | **Code actions** |
 | `<leader>rn` | **Renombrar** símbolo |
 | `<leader>rs` | **Reiniciar** LSP |
+| `<leader>fm` | **Formatear** archivo/selección |
 
 ---
 
