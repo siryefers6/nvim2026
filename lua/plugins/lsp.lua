@@ -163,11 +163,7 @@ return {
       on_attach = on_attach,
     })
     
-    -- Auto-iniciar servidores disponibles
-    vim.api.nvim_create_autocmd("FileType", {
-      callback = function(event)
-        vim.lsp.start_client(vim.lsp.get_client_by_id(event.buf), { once = false })
-      end,
-    })
+    -- Habilitar servidores cuando se abren los archivos correspondientes
+    vim.lsp.enable({ "lua_ls", "pyright", "ts_ls", "html", "cssls", "jsonls", "tailwindcss" })
   end,
 }
