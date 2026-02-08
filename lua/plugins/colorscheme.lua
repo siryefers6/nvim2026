@@ -42,6 +42,10 @@ return {
       vim.cmd.colorscheme("catppuccin")
     end,
   },
+
+  -- Tema local estilo VBA (archivo colors/vba.lua)
+  -- Para usarlo, cambia la linea de arriba a:
+  -- vim.cmd.colorscheme("vba")
   
   -- Alternativas (comentadas, descomenta para usar):
   -- {
