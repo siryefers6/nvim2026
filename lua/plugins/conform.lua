@@ -24,11 +24,8 @@ return {
         python = { "isort", "black" },
       },
       
-      -- Formatear al guardar
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true, -- Usar LSP si no hay formateador
-      },
+      -- Deshabilitar autoformateo al guardar (formateo manual con keymap)
+      format_on_save = false,
     })
     
     -- Keymap para formatear manualmente
