@@ -16,6 +16,9 @@ keymap("n", "<leader>Q", ":qa!<CR>", opts)
 -- Limpiar búsqueda
 keymap("n", "<Esc>", ":noh<CR>", opts)
 
+-- Refrescar cambios del filesystem
+keymap("n", "<leader>rf", ":checktime<CR>", opts)
+
 -- ========== NAVEGACIÓN ==========
 -- Navegación entre ventanas con leader
 keymap("n", "<leader>h", "<C-w>h", opts)

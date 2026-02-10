@@ -53,6 +53,9 @@ return {
     local float_term = Terminal:new({
       direction = "float",
       hidden = true,
+      on_close = function()
+        vim.cmd("checktime") -- Refrescar archivos cuando se cierra la terminal
+      end,
     })
     
     function _FLOAT_TERM_TOGGLE()
@@ -63,6 +66,9 @@ return {
     local horizontal_term = Terminal:new({
       direction = "horizontal",
       hidden = true,
+      on_close = function()
+        vim.cmd("checktime")
+      end,
     })
     
     function _HORIZONTAL_TERM_TOGGLE()
@@ -73,6 +79,9 @@ return {
     local vertical_term = Terminal:new({
       direction = "vertical",
       hidden = true,
+      on_close = function()
+        vim.cmd("checktime")
+      end,
     })
     
     function _VERTICAL_TERM_TOGGLE()

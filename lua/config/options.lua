@@ -39,6 +39,8 @@ opt.swapfile = false                 -- No crear archivos swap
 opt.backup = false                   -- No crear backups
 opt.updatetime = 300                 -- Tiempo de actualización más rápido
 opt.timeoutlen = 400                 -- Tiempo de espera para combinaciones
+opt.autoread = true                  -- Releer archivos cuando cambian en disco
+opt.autowrite = true                 -- Guardar automáticamente antes de comandos
 
 -- Rendimiento
 opt.lazyredraw = false               -- No lazy redraw (para mejor experiencia)
