@@ -37,6 +37,15 @@ return {
           "dist/",
           "build/",
           "%.lock",
+          "%.venv/",
+          "venv/",
+          "env/",
+          "__pycache__/",
+          "%.mypy_cache/",
+          "%.pytest_cache/",
+          "%.ruff_cache/",
+          "%.ipynb_checkpoints/",
+          "(^|/)%.",
         },
         
         layout_config = {
@@ -65,7 +74,7 @@ return {
         find_files = {
           theme = "dropdown",
           previewer = false,
-          hidden = true,
+          hidden = false,
         },
         live_grep = {
           theme = "dropdown",

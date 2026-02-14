@@ -5,11 +5,14 @@
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
+  cmd = { "LspInfo", "LspLog", "LspStart", "LspStop", "LspRestart" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
+    local lspconfig = require("lspconfig")
+    local util = require("lspconfig.util")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     
     local opts = { noremap = true, silent = true }
@@ -86,12 +89,11 @@ return {
       },
     })
     
-    -- Usar la nueva API de Neovim 0.11+: vim.lsp.config()
     -- Lua
-    vim.lsp.config("lua_ls", {
+    lspconfig.lua_ls.setup({
       cmd = { "lua-language-server" },
       filetypes = { "lua" },
-      root_markers = { ".luarc.json", ".luarc.jsonc", "selene.toml", "stylua.toml" },
+      root_dir = util.root_pattern(".luarc.json", ".luarc.jsonc", "selene.toml", "stylua.toml", ".git"),
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
@@ -110,60 +112,66 @@ return {
     })
     
     -- Python
-    vim.lsp.config("pyright", {
+    lspconfig.pyright.setup({
       cmd = { "pyright-langserver", "--stdio" },
       filetypes = { "python" },
-      root_markers = { "pyrightconfig.json", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
+      root_dir = util.root_pattern("pyrightconfig.json", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git"),
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- TypeScript/JavaScript
-    vim.lsp.config("ts_ls", {
+    lspconfig.tsserver.setup({
       cmd = { "typescript-language-server", "--stdio" },
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-      root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
+      root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- HTML
-    vim.lsp.config("html", {
+    lspconfig.html.setup({
       cmd = { "html-languageserver", "--stdio" },
       filetypes = { "html" },
-      root_markers = { ".htmlhintrc", "package.json" },
+      root_dir = util.root_pattern(".htmlhintrc", "package.json", ".git"),
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- CSS
-    vim.lsp.config("cssls", {
+    lspconfig.cssls.setup({
       cmd = { "css-languageserver", "--stdio" },
       filetypes = { "css", "scss", "less" },
-      root_markers = { "package.json", ".git" },
+      root_dir = util.root_pattern("package.json", ".git"),
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- JSON
-    vim.lsp.config("jsonls", {
+    lspconfig.jsonls.setup({
       cmd = { "vscode-json-languageserver", "--stdio" },
       filetypes = { "json", "jsonc" },
-      root_markers = { "package.json", ".git" },
+      root_dir = util.root_pattern("package.json", ".git"),
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- Tailwind CSS
-    vim.lsp.config("tailwindcss", {
+    lspconfig.tailwindcss.setup({
       cmd = { "tailwindcss-language-server", "--stdio" },
       filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx" },
-      root_markers = { "tailwind.config.js", "tailwind.config.ts", "tailwind.config.cjs", "tailwind.config.mjs" },
+      root_dir = util.root_pattern("tailwind.config.js", "tailwind.config.ts", "tailwind.config.cjs", "tailwind.config.mjs", ".git"),
       capabilities = capabilities,
       on_attach = on_attach,
     })
-    
-    -- Habilitar servidores cuando se abren los archivos correspondientes
-    vim.lsp.enable({ "lua_ls", "pyright", "ts_ls", "html", "cssls", "jsonls", "tailwindcss" })
+
+    -- Emmet
+    lspconfig.emmet_ls.setup({
+      cmd = { "emmet-ls", "--stdio" },
+      filetypes = { "html", "css", "scss", "less", "javascriptreact", "typescriptreact", "svelte", "vue" },
+      root_dir = util.root_pattern("package.json", ".git"),
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
   end,
 }
