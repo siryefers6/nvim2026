@@ -9,6 +9,7 @@ return {
   dependencies = {
     "windwp/nvim-ts-autotag",          -- Auto-cierre de tags HTML
     "nvim-treesitter/nvim-treesitter-textobjects", -- Text objects adicionales
+    "JoosepAlviste/nvim-ts-context-commentstring", -- Commentstring por contexto
   },
   opts = {
       -- Habilitar resaltado

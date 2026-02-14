@@ -31,7 +31,7 @@ return {
       ensure_installed = {
         "lua_ls",        -- Lua
         "pyright",       -- Python
-        "tsserver",      -- TypeScript/JavaScript
+        "ts_ls",         -- TypeScript/JavaScript
         "html",          -- HTML
         "cssls",         -- CSS
         "tailwindcss",   -- Tailwind CSS
