@@ -11,8 +11,6 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
-    local lspconfig = require("lspconfig")
-    local util = require("lspconfig.util")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     
     local opts = { noremap = true, silent = true }
@@ -90,10 +88,10 @@ return {
     })
     
     -- Lua
-    lspconfig.lua_ls.setup({
+    vim.lsp.config("lua_ls", {
       cmd = { "lua-language-server" },
       filetypes = { "lua" },
-      root_dir = util.root_pattern(".luarc.json", ".luarc.jsonc", "selene.toml", "stylua.toml", ".git"),
+      root_markers = { ".luarc.json", ".luarc.jsonc", "selene.toml", "stylua.toml", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
@@ -112,66 +110,69 @@ return {
     })
     
     -- Python
-    lspconfig.pyright.setup({
+    vim.lsp.config("pyright", {
       cmd = { "pyright-langserver", "--stdio" },
       filetypes = { "python" },
-      root_dir = util.root_pattern("pyrightconfig.json", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git"),
+      root_markers = { "pyrightconfig.json", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- TypeScript/JavaScript
-    lspconfig.ts_ls.setup({
+    vim.lsp.config("ts_ls", {
       cmd = { "typescript-language-server", "--stdio" },
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-      root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
+      root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- HTML
-    lspconfig.html.setup({
+    vim.lsp.config("html", {
       cmd = { "html-languageserver", "--stdio" },
       filetypes = { "html" },
-      root_dir = util.root_pattern(".htmlhintrc", "package.json", ".git"),
+      root_markers = { ".htmlhintrc", "package.json", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- CSS
-    lspconfig.cssls.setup({
+    vim.lsp.config("cssls", {
       cmd = { "css-languageserver", "--stdio" },
       filetypes = { "css", "scss", "less" },
-      root_dir = util.root_pattern("package.json", ".git"),
+      root_markers = { "package.json", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- JSON
-    lspconfig.jsonls.setup({
+    vim.lsp.config("jsonls", {
       cmd = { "vscode-json-languageserver", "--stdio" },
       filetypes = { "json", "jsonc" },
-      root_dir = util.root_pattern("package.json", ".git"),
+      root_markers = { "package.json", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
     
     -- Tailwind CSS
-    lspconfig.tailwindcss.setup({
+    vim.lsp.config("tailwindcss", {
       cmd = { "tailwindcss-language-server", "--stdio" },
       filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx" },
-      root_dir = util.root_pattern("tailwind.config.js", "tailwind.config.ts", "tailwind.config.cjs", "tailwind.config.mjs", ".git"),
+      root_markers = { "tailwind.config.js", "tailwind.config.ts", "tailwind.config.cjs", "tailwind.config.mjs", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- Emmet
-    lspconfig.emmet_ls.setup({
+    vim.lsp.config("emmet_ls", {
       cmd = { "emmet-ls", "--stdio" },
       filetypes = { "html", "css", "scss", "less", "javascriptreact", "typescriptreact", "svelte", "vue" },
-      root_dir = util.root_pattern("package.json", ".git"),
+      root_markers = { "package.json", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
     })
+
+    -- Habilitar servidores cuando se abren los archivos correspondientes
+    vim.lsp.enable({ "lua_ls", "pyright", "ts_ls", "html", "cssls", "jsonls", "tailwindcss", "emmet_ls" })
   end,
 }
